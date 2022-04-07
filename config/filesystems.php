@@ -39,8 +39,14 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'tree_species' => [
+            'driver' => 'local',
+            'root' => storage_path('app/files/tree_species'),
             'throw' => false,
         ],
 
@@ -71,6 +77,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('tree_species') => storage_path('app/files/tree_species'),
     ],
 
 ];
