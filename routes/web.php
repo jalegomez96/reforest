@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LotOfTreeController;
 use App\Http\Controllers\TreeSpeciesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,13 +25,28 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get('/treespecie', [TreeSpeciesController::class, 'getIndex'])->name('tree_specie.getIndex');
+Route::get('/treespecie/show/{id}', [TreeSpeciesController::class, 'getShow'])->name('tree_specie.getShow');
+
 Route::group(['middleware' => ['role:admin']], function () {
     //
-    Route::get('/treespecie', [TreeSpeciesController::class, 'getIndex'])->name('tree_specie.getIndex');
-    Route::get('/treespecie/show/{id}', [TreeSpeciesController::class, 'getShow'])->name('tree_specie.getShow');
     Route::get('/treespecie/create', [TreeSpeciesController::class, 'getCreate'])->name('tree_specie.getCreate');
     Route::get('/treespecie/edit/{id}', [TreeSpeciesController::class, 'getEdit'])->name('tree_specie.getEdit');
     Route::post('/treespecie/create', [TreeSpeciesController::class, 'postCreate'])->name('tree_specie.postCreate');
     Route::put('/treespecie/edit', [TreeSpeciesController::class, 'putEdit'])->name('tree_specie.putEdit');
     Route::delete('/treespecie/delete', [TreeSpeciesController::class, 'delete'])->name('tree_specie.delete');
+
+    Route::get('/lotoftree/all', [LotOfTreeController::class, 'getAll'])->name('lot_of_tree.getAll');
+    Route::put('/lotoftree/approve', [LotOfTreeController::class, 'putApprove'])->name('lot_of_tree.putApprove');
+    Route::put('/lotoftree/deny', [LotOfTreeController::class, 'putDeny'])->name('lot_of_tree.putDeny');
 });
+
+
+Route::get('/lotoftree', [LotOfTreeController::class, 'getIndex'])->name('lot_of_tree.getIndex');
+Route::get('/lotoftree/show/{id}', [LotOfTreeController::class, 'getShow'])->name('lot_of_tree.getShow');
+Route::get('/lotoftree/create/{id}', [LotOfTreeController::class, 'getCreate'])->name('lot_of_tree.getCreate');
+Route::get('/lotoftree/edit/{id}', [LotOfTreeController::class, 'getEdit'])->name('lot_of_tree.getEdit');
+Route::post('/lotoftree/create', [LotOfTreeController::class, 'postCreate'])->name('lot_of_tree.postCreate');
+Route::put('/lotoftree/edit', [LotOfTreeController::class, 'putEdit'])->name('lot_of_tree.putEdit');
+Route::delete('/lotoftree/delete', [LotOfTreeController::class, 'delete'])->name('lot_of_tree.delete');

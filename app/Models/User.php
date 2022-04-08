@@ -42,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lot_of_trees()
+    {
+        return $this->hasMany(LotOfTree::class, 'id_donor');
+    }
 }

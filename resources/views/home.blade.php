@@ -8,22 +8,19 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                    <p>
-
-                        @role('admin')
-                        I am a admin!
-                        @else
-                        I am not a admin...
-                        @endrole
-                    </p>
+                    <a href="{{ route('tree_specie.getIndex') }}">Lista de especies</a>
                 </div>
+                <div class="card-body">
+                    <a href="{{ route('lot_of_tree.getIndex') }}">Mi lista de pedidos</a>
+                </div>
+                @role('admin')
+                <div class="card-body">
+                    <a href="{{ route('tree_specie.getCreate') }}">Añadir especies</a>
+                </div>
+                <div class="card-body">
+                    <a href="{{ route('lot_of_tree.getAll') }}">Revisar de pedidos</a>
+                </div>
+                @endrole
             </div>
         </div>
     </div>

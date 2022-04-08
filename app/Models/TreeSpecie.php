@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TreeSpecie extends Model
 {
     use HasFactory;
-    public function image()
+    public function lot_of_trees()
     {
-        return $this->belongsTo(File::class);
+        return $this->hasMany(LotOfTree::class, 'id_specie');
     }
 }

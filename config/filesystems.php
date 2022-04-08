@@ -50,6 +50,12 @@ return [
             'throw' => false,
         ],
 
+        'proof_of_payments' => [
+            'driver' => 'local',
+            'root' => storage_path('app/files/proof_of_payments'),
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -78,6 +84,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('tree_species') => storage_path('app/files/tree_species'),
+        public_path('proof_of_payments') => storage_path('app/files/proof_of_payments'),
     ],
 
 ];

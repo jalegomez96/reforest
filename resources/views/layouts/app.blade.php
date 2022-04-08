@@ -35,7 +35,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @guest
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tree_specie.getIndex') }}">Lista de especies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('lot_of_tree.getIndex') }}">Mi lista de pedidos</a>
+                        </li>
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tree_specie.getCreate') }}">Añadir especies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('lot_of_tree.getAll') }}">Revisar de pedidos</a>
+                        </li>
+                        @endrole
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
