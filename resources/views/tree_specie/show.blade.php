@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="row g-0">
                     <div class="col-md-5">
-                        <img src="{{ asset('tree_species/' . $tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
+                        <img src="{{ asset('upload_files/tree_species/' . $tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">

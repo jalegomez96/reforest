@@ -46,13 +46,13 @@ return [
 
         'tree_species' => [
             'driver' => 'local',
-            'root' => storage_path('app/files/tree_species'),
+            'root' => public_path('upload_files/tree_species'),
             'throw' => false,
         ],
 
         'proof_of_payments' => [
             'driver' => 'local',
-            'root' => storage_path('app/files/proof_of_payments'),
+            'root' => public_path('upload_files/proof_of_payments'),
             'throw' => false,
         ],
 
@@ -83,8 +83,6 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('tree_species') => storage_path('app/files/tree_species'),
-        public_path('proof_of_payments') => storage_path('app/files/proof_of_payments'),
     ],
 
 ];

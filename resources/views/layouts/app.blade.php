@@ -43,6 +43,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('lot_of_tree.getIndex') }}">Mi lista de pedidos</a>
                         </li>
+
                         @role('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tree_specie.getCreate') }}">Añadir especies</a>

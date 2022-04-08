@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="row g-0">
                     <div class="col-md-5">
-                        <img src="{{ asset('tree_species/' . $lot_of_tree->tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
+                        <img src="{{ asset('upload_files/tree_species/' . $lot_of_tree->tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
@@ -39,7 +39,7 @@
                             <div class="d-grid gap-2 d-md-block">
 
                                 @if($lot_of_tree->status=='PA')
-                                <a href=" {{ asset('proof_of_payments/' . $lot_of_tree->proof_of_payment) }}" class="btn btn-warning" role="button" target="_blank">Ver comprobante</a>
+                                <a href=" {{ asset('upload_files/proof_of_payments/' . $lot_of_tree->proof_of_payment) }}" class="btn btn-warning" role="button" target="_blank">Ver comprobante</a>
                                 @role('admin')
                                 <form action="{{ route('lot_of_tree.putApprove')  }}" method="POST" style="display : inline;">
                                     {{method_field('PUT')}}

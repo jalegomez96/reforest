@@ -42,11 +42,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::put('/lotoftree/deny', [LotOfTreeController::class, 'putDeny'])->name('lot_of_tree.putDeny');
 });
 
-
-Route::get('/lotoftree', [LotOfTreeController::class, 'getIndex'])->name('lot_of_tree.getIndex');
-Route::get('/lotoftree/show/{id}', [LotOfTreeController::class, 'getShow'])->name('lot_of_tree.getShow');
-Route::get('/lotoftree/create/{id}', [LotOfTreeController::class, 'getCreate'])->name('lot_of_tree.getCreate');
-Route::get('/lotoftree/edit/{id}', [LotOfTreeController::class, 'getEdit'])->name('lot_of_tree.getEdit');
-Route::post('/lotoftree/create', [LotOfTreeController::class, 'postCreate'])->name('lot_of_tree.postCreate');
-Route::put('/lotoftree/edit', [LotOfTreeController::class, 'putEdit'])->name('lot_of_tree.putEdit');
-Route::delete('/lotoftree/delete', [LotOfTreeController::class, 'delete'])->name('lot_of_tree.delete');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/lotoftree', [LotOfTreeController::class, 'getIndex'])->name('lot_of_tree.getIndex');
+    Route::get('/lotoftree/show/{id}', [LotOfTreeController::class, 'getShow'])->name('lot_of_tree.getShow');
+    Route::get('/lotoftree/create/{id}', [LotOfTreeController::class, 'getCreate'])->name('lot_of_tree.getCreate');
+    Route::get('/lotoftree/edit/{id}', [LotOfTreeController::class, 'getEdit'])->name('lot_of_tree.getEdit');
+    Route::post('/lotoftree/create', [LotOfTreeController::class, 'postCreate'])->name('lot_of_tree.postCreate');
+    Route::put('/lotoftree/edit', [LotOfTreeController::class, 'putEdit'])->name('lot_of_tree.putEdit');
+    Route::delete('/lotoftree/delete', [LotOfTreeController::class, 'delete'])->name('lot_of_tree.delete');
+});

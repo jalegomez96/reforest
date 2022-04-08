@@ -12,7 +12,7 @@
                     <div class="card mb-2">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ asset('tree_species/' . $lot_of_tree->tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ asset('upload_files/tree_species/' . $lot_of_tree->tree_specie->image) }}" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

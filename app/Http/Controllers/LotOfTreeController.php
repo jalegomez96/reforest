@@ -71,7 +71,7 @@ class LotOfTreeController extends Controller
         }
 
         $lot_of_tree = LotOfTree::findOrFail($request['id']);
-        $lot_of_tree->status = 'PA';
+        $lot_of_tree->status = isset($filename) ? 'PA' : $lot_of_tree->status;
         $lot_of_tree->proof_of_payment = isset($filename) ? $filename : $lot_of_tree->proof_of_payment;
         $lot_of_tree->save();
         return redirect()->route('lot_of_tree.getIndex');
