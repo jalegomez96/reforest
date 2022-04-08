@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class TreeSpeciesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function getIndex()
     {
