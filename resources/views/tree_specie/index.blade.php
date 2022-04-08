@@ -18,7 +18,7 @@
                                     <h6 class="card-subtitle mb-2 text-muted">{{$tree_specie->scientific_name}}</h6>
                                     <p class="card-text">{{$tree_specie->description}}</p>
                                     <a href="{{ route('tree_specie.getShow', ['id' => $tree_specie->id]) }}" class="btn btn-primary">Ver mas</a>
-                                    <a href="{{ route('lot_of_tree.getCreate', ['id' => $tree_specie->id]) }}" class="btn btn-primary">Crear lote</a>
+                                    <a href="{{ route('lot_of_tree.getCreate', ['id' => $tree_specie->id]) }}" class="btn btn-primary">Solicitar lote</a>
                                 </div>
 
                             </div>
