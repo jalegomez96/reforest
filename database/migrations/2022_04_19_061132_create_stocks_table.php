@@ -13,19 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lot_of_trees', function (Blueprint $table) {
+        Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_donor');
             $table->unsignedBigInteger('id_specie');
             $table->unsignedInteger('quantity');
-            $table->string('proof_of_payment')->nullable();
-            $table->string('status');
-            $table->string('direction');
             $table->timestamps();
-            $table->foreign('id_donor')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
             $table->foreign('id_specie')
                 ->references('id')
                 ->on('tree_species')
@@ -40,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lot_of_trees');
+        Schema::dropIfExists('stocks');
     }
 };

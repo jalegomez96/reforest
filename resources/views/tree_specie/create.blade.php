@@ -31,18 +31,41 @@
 
                     <div class="form-group">
                         <label for="description">Descripción</label>
-                        <input type="text" name="description" id="description" class="form-control">
+                        <textarea rows="4" name="description" id="description" class="form-control"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="price">Costo unitario</label>
+                        <input type="text" name="price" id="price" class="form-control">
+                    </div>
+
                     <div class="form-group">
                         <label for="image">Imagen</label>
                         <input type="file" name="image" id="image" class="form-control">
                     </div>
 
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                            Guardar
-                        </button>
+
+                    <div class="row mt-3">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-grid">
+                                @if(Route::is('tree_specie.getCreate') )
+                                <a href="{{ route('tree_specie.getIndex')  }}" class="btn btn-light" role="button">Volver</a>
+                                @endif
+                                @if(Route::is('stock.getCreate') )
+                                <a href="{{ route('stock.getIndex')  }}" class="btn btn-light" role="button">Volver</a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
+
+
 
                 </form>
 

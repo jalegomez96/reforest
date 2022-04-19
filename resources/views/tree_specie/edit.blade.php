@@ -31,8 +31,14 @@
 
                     <div class="form-group">
                         <label for="description">Descripción</label>
-                        <input type="text" name="description" id="description" value="{{$tree_specie->description}}" class=" form-control">
+                        <textarea rows="4" name="description" id="description" class="form-control">{{$tree_specie->description}}</textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="price">Costo unitario</label>
+                        <input type="text" name="price" id="price" value="{{$tree_specie->price}}" class=" form-control">
+                    </div>
+
                     <div class="form-group">
                         <label for="image">Imagen</label>
                         <input type="file" name="image" id="image" class="form-control">

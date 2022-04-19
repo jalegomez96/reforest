@@ -23,6 +23,7 @@
                                     <h6><b>Usuario: </b>{{$lot_of_tree->user->name}}</h6>
                                     @endrole
                                     <h6 class="card-text"><b>Cantidad: </b>{{$lot_of_tree->quantity}}</h6>
+                                    <h6 class="card-text"><b>Costo total: </b>{{$lot_of_tree->quantity * $lot_of_tree->tree_specie->price}}</h6>
                                     <h6 class="card-text"><b>Estado: </b>
                                         @switch($lot_of_tree->status)
                                         @case('PPOP')

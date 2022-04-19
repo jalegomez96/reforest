@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LotOfTreeController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TreeSpeciesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,15 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/treespecie/create', [TreeSpeciesController::class, 'postCreate'])->name('tree_specie.postCreate');
     Route::put('/treespecie/edit', [TreeSpeciesController::class, 'putEdit'])->name('tree_specie.putEdit');
     Route::delete('/treespecie/delete', [TreeSpeciesController::class, 'delete'])->name('tree_specie.delete');
+
+    Route::get('/stock', [StockController::class, 'getIndex'])->name('stock.getIndex');
+    Route::get('/stock/show/{id}', [StockController::class, 'getShow'])->name('stock.getShow');
+    Route::get('/stock/create', [StockController::class, 'getCreate'])->name('stock.getCreate');
+    Route::get('/stock/edit/{id}', [StockController::class, 'getEdit'])->name('stock.getEdit');
+    // Route::post('/lotoftree/create', [LotOfTreeController::class, 'postCreate'])->name('lot_of_tree.postCreate');
+    Route::put('/stock/edit', [StockController::class, 'putEdit'])->name('stock.putEdit');
+    // Route::delete('/lotoftree/delete', [LotOfTreeController::class, 'delete'])->name('lot_of_tree.delete');
+
 
     Route::get('/lotoftree/all', [LotOfTreeController::class, 'getAll'])->name('lot_of_tree.getAll');
     Route::put('/lotoftree/approve', [LotOfTreeController::class, 'putApprove'])->name('lot_of_tree.putApprove');

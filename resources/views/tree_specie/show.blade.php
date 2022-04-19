@@ -15,6 +15,8 @@
                             <h5><b>Nombre científico: </b>{{$tree_specie->scientific_name}}</h5>
                             <h5><b>Familia: </b>{{$tree_specie->family}}</h5>
                             <p><b>Descripción: </b>{{$tree_specie->description}}</p>
+                            <p><b>Costo unitario: </b>{{$tree_specie->price}}</p>
+                            <p><b>Existencias: </b>{{$tree_specie->stock->quantity}}</p>
                             <div class="d-grid gap-2 d-md-block">
                                 @role('admin')
                                 <form action="{{ route('tree_specie.delete')  }}" method="POST" style="display : inline;">
@@ -26,8 +28,14 @@
                                     </button>
                                 </form>
                                 <a href=" {{ route('tree_specie.getEdit', ['id' => $tree_specie->id]) }}" class="btn btn-warning" role="button">Editar especie</a>
+                                <a href=" {{ route('stock.getEdit', ['id' => $tree_specie->id]) }}" class="btn btn-info" role="button">Editar existencias</a>
                                 @endrole
-                                <a href="{{ route('tree_specie.getIndex')  }}" class="btn btn-light" role="button">Volver al listado</a>
+                                @if(Route::is('tree_specie.getShow') )
+                                <a href="{{ route('tree_specie.getIndex')  }}" class="btn btn-light" role="button">Volver</a>
+                                @endif
+                                @if(Route::is('stock.getShow') )
+                                <a href="{{ route('stock.getIndex')  }}" class="btn btn-light" role="button">Volver</a>
+                                @endif
                             </div>
                         </div>
                     </div>

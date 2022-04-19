@@ -46,13 +46,16 @@ class TreeSpeciesController extends Controller
             file_get_contents($uploaded_file)
         );
 
-        $tree_specie = new TreeSpecie;
-        $tree_specie->scientific_name = $request['scientific_name'];
-        $tree_specie->common_name = $request['common_name'];
-        $tree_specie->family = $request['family'];
-        $tree_specie->description = $request['description'];
-        $tree_specie->image = $filename;
-        $tree_specie->save();
+        $tree_specie = TreeSpecie::create([
+            'scientific_name' => $request['scientific_name'],
+            'common_name' => $request['common_name'],
+            'family' => $request['family'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+            'image' => $filename,
+        ]);
+        $tree_specie->stock()->create(['quantity' => 0]);
+
         return redirect()->route('tree_specie.getIndex');
     }
 
@@ -73,6 +76,7 @@ class TreeSpeciesController extends Controller
         $tree_specie->common_name = $request['common_name'];
         $tree_specie->family = $request['family'];
         $tree_specie->description = $request['description'];
+        $tree_specie->price = $request['price'];
         $tree_specie->image = isset($filename) ? $filename : $tree_specie->image;
         $tree_specie->save();
         return redirect()->route('tree_specie.getShow', ['id' => $request['id']]);

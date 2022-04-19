@@ -51,6 +51,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('lot_of_tree.getAll') }}">Revisar de pedidos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('stock.getIndex') }}">Inventario</a>
+                        </li>
                         @endrole
                         @endguest
                     </ul>

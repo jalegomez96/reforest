@@ -18,7 +18,13 @@
                             @role('admin')
                             <h6><b>Usuario: </b>{{$lot_of_tree->user->name}}</h6>
                             @endrole
+                            <h6><b>Dirección: </b>{{$lot_of_tree->direction}}</h6>
                             <h6><b>Cantidad: </b>{{$lot_of_tree->quantity}}</h6>
+                            @if($lot_of_tree->quantity > $lot_of_tree->tree_specie->stock->quantity)
+                            <h6>No hay existencias suficientes</h6>
+                            @endif
+                            <h6><b>Costo total: </b>{{$lot_of_tree->quantity * $lot_of_tree->tree_specie->price}}</h6>
+
                             <h6 class="card-text"><b>Estado: </b>
                                 @switch($lot_of_tree->status)
                                 @case('PPOP')
@@ -41,30 +47,32 @@
                                 @if($lot_of_tree->status=='PA')
                                 <a href=" {{ asset('upload_files/proof_of_payments/' . $lot_of_tree->proof_of_payment) }}" class="btn btn-warning" role="button" target="_blank">Ver comprobante</a>
                                 @role('admin')
-                                <form action="{{ route('lot_of_tree.putApprove')  }}" method="POST" style="display : inline;">
-                                    {{method_field('PUT')}}
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="id" id="id" value="{{$lot_of_tree->id}}">
-                                    <button type="submit" class="btn btn-info">
-                                        Aprobar
-                                    </button>
-                                </form>
-                                <form action="{{ route('lot_of_tree.putDeny')  }}" method="POST" style="display : inline;">
-                                    {{method_field('PUT')}}
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="id" id="id" value="{{$lot_of_tree->id}}">
-                                    <button type="submit" class="btn btn-danger">
-                                        Rechazar
-                                    </button>
-                                </form>
-                                @endrole
-                                @endif
+                                @if($lot_of_tree->quantity <= $lot_of_tree->tree_specie->stock->quantity)
+                                    <form action="{{ route('lot_of_tree.putApprove')  }}" method="POST" style="display : inline;">
+                                        {{method_field('PUT')}}
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="id" id="id" value="{{$lot_of_tree->id}}">
+                                        <button type="submit" class="btn btn-info">
+                                            Aprobar
+                                        </button>
+                                    </form>
+                                    @endif
+                                    <form action="{{ route('lot_of_tree.putDeny')  }}" method="POST" style="display : inline;">
+                                        {{method_field('PUT')}}
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="id" id="id" value="{{$lot_of_tree->id}}">
+                                        <button type="submit" class="btn btn-danger">
+                                            Rechazar
+                                        </button>
+                                    </form>
+                                    @endrole
+                                    @endif
 
-                                @role('admin')
-                                <a href="{{ route('lot_of_tree.getAll')  }}" class="btn btn-light" role="button">Volver al listado</a>
-                                @else
-                                <a href="{{ route('lot_of_tree.getIndex')  }}" class="btn btn-light" role="button">Volver al listado</a>
-                                @endrole
+                                    @role('admin')
+                                    <a href="{{ route('lot_of_tree.getAll')  }}" class="btn btn-light" role="button">Volver al listado</a>
+                                    @else
+                                    <a href="{{ route('lot_of_tree.getIndex')  }}" class="btn btn-light" role="button">Volver al listado</a>
+                                    @endrole
 
                             </div>
                         </div>

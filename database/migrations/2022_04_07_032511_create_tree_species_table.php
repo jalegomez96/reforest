@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('scientific_name');
             $table->string('common_name');
             $table->string('family');
-            $table->string('description');
+            $table->longText('description');
+            $table->unsignedInteger('price');
             $table->string('image');
             $table->timestamps();
         });

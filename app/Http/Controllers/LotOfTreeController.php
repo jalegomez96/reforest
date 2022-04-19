@@ -54,6 +54,7 @@ class LotOfTreeController extends Controller
         $lot_of_tree->id_donor = Auth::id();
         $lot_of_tree->id_specie = $request['id_specie'];
         $lot_of_tree->quantity = $request['quantity'];
+        $lot_of_tree->direction = $request['direction'];
         $lot_of_tree->status = 'PPOP';
         $lot_of_tree->save();
         return redirect()->route('lot_of_tree.getIndex');
@@ -83,6 +84,9 @@ class LotOfTreeController extends Controller
         $lot_of_tree = LotOfTree::findOrFail($request['id']);
         $lot_of_tree->status = 'A';
         $lot_of_tree->save();
+        $stock = $lot_of_tree->tree_specie->stock;
+        $stock->quantity = $stock->quantity - $lot_of_tree->quantity;
+        $stock->save();
         return redirect()->route('lot_of_tree.getAll');
     }
 

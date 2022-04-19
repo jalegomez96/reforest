@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     private $admin_user = array(
-        'name' => 'admin',
+        'name' => 'Admin',
         'email' => 'admin@reforest.com',
         'password' => 'admin'
     );
@@ -25,19 +25,24 @@ class DatabaseSeeder extends Seeder
     private $users = array(
 
         array(
-            'name' => 'Jaime Gomez',
+            'name' => 'Jaime Alejandro Gomez',
             'email' => 'jgomez@gmail.com',
             'password' => 'jgomez1234'
         ),
         array(
-            'name' => 'Juan Meneses',
+            'name' => 'Juan David Meneses',
             'email' => 'jmeneses@gmail.com',
             'password' => 'jmeneses1234'
         ),
         array(
-            'name' => 'Brayan Tobar',
+            'name' => 'Brayan David Tobar',
             'email' => 'btobar@gmail.com',
             'password' => 'btobar1234'
+        ),
+        array(
+            'name' => 'Juan Jose Bolaños',
+            'email' => 'jjose@gmail.com',
+            'password' => 'jjose1234'
         )
     );
 
@@ -73,5 +78,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->seedAdminUser();
         $this->seedUsers();
+        $this->call(TreeSpeciesTableSeeder::class);
     }
 }

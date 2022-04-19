@@ -15,7 +15,8 @@
                             <h5><b>Nombre científico: </b>{{$lot_of_tree->tree_specie->scientific_name}}</h5>
                             <h5><b>Familia: </b>{{$lot_of_tree->tree_specie->family}}</h5>
                             <h6><b>Descripción: </b>{{$lot_of_tree->tree_specie->description}}</h6>
-                            <h6><b>Cantidad: </b>{{$lot_of_tree->cantidad}}</h6>
+                            <h6><b>Costo unitario: </b>{{$lot_of_tree->tree_specie->price}}</h6>
+                            <h6><b>Cantidad: </b>{{$lot_of_tree->quantity}}</h6>
                             <form action="{{ route('lot_of_tree.putEdit') }}" method="POST" enctype="multipart/form-data">
                                 {{method_field('PUT')}}
                                 {{ csrf_field() }}
